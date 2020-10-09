@@ -8,7 +8,7 @@ from product.models import Category, Product
 #     context = {
 #         'setting': setting
 #     }
-# 
+#
 #     return context
 
 
