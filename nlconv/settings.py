@@ -24,7 +24,7 @@ SECRET_KEY = 'a!k2yzfvf4d9=!x)ulv(*3*8vnp4!mei%sajf89mqldn3n2n%r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['165.227.163.129', 'localhost']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -74,7 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'nlconv.context_processors.settings',
+                # 'nlconv.context_processors.settings',
                 'nlconv.context_processors.menu',
                 'nlconv.context_processors.footer_blog',
             ],
@@ -135,10 +135,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # Anadizinde staticleri kullanmak için
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, 'static'),
     # '/var/www/static/',
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # FileField
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
