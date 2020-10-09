@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %} Hakkımızda {% endblock title %}
+
+
+{% block body %}
+
+    <div role="main" class="main">
+        <section
+                class="page-header page-header-modern page-header-background page-header-background-md overlay overlay-color-dark overlay-show overlay-op-7"
+                style="background-image: url({% static 'img/page-header/page-head1.jpg' %});">
+            <div class="container">
+                <div class="row mt-5">
+                    <div class="col-md-12 align-self-center p-static order-2 text-center">
+                        <h1 class="text-9 font-weight-bold">Hakkımızda</h1>
+                        <span class="sub-title">Biz kimiz, Ekibimiz, Müşterilerimiz</span>
+                    </div>
+                    <div class="col-md-12 align-self-center order-1">
+                        <ul class="breadcrumb breadcrumb-light d-block text-center">
+                            <li><a href="{% url 'home:home' %}">Anasayfa</a></li>
+                            <li class="active">Hakkımızda</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+
+            <div class="row pt-5">
+                <div class="col">
+
+
+
+                    <div class="row mt-3 mb-5">
+
+                        {% for info in infos %}
+                            <div class="col-md-4 appear-animation" data-appear-animation="fadeInLeftShorter"
+                                 data-appear-animation-delay="800">
+                                <h3 class="font-weight-bold text-4 mb-2">{{ info.title }}</h3>
+                                <p>{{ info.description }}</p>
+                            </div>
+                        {% endfor %}
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <section class="section section-height-3 bg-color-grey-scale-1 m-0 border-0">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-lg-6 pb-sm-4 pb-lg-0 pr-lg-5 mb-sm-5 mb-lg-0">
+                        <h2 class="text-color-dark font-weight-normal text-6 mb-2"><strong
+                                class="font-weight-extra-bold">{{ about.title }}</strong></h2>
+                        <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit massa enim. Nullam id varius nunc. </p> -->
+                        <p class="pr-5 mr-5">{{ about.short_description }}  </p>
+                    </div>
+                    <div class="col-sm-8 col-md-6 col-lg-4 offset-sm-4 offset-md-4 offset-lg-2 mt-sm-5"
+                         style="top: 1.7rem;">
+                        <img src="{{ about.image_1.url }}"
+                             class="img-fluid position-absolute d-none d-sm-block appear-animation"
+                             data-appear-animation="expandIn" data-appear-animation-delay="300"
+                             style="top: 10%; left: -50%;" alt="{{ about.title }}"/>
+                        <img src="{{ about.image_2.url }}"
+                             class="img-fluid position-absolute d-none d-sm-block appear-animation"
+                             data-appear-animation="expandIn" style="top: -33%; left: -29%;" alt="{{ about.title }}"/>
+                        <img src="{{ about.image_3.url }}" class="img-fluid position-relative appear-animation mb-2"
+                             data-appear-animation="expandIn" data-appear-animation-delay="600"
+                             alt="{{ about.title }}"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container appear-animation" data-appear-animation="fadeInUpShorter"
+             data-appear-animation-delay="300">
+            <div class="row pt-5 pb-4 my-5">
+
+                <div class="col-md-12 order-1 order-md-2 text-center text-md-left mb-5 mb-md-0">
+                    <h2 class="text-color-dark font-weight-normal text-6 mb-2 pb-1"><strong
+                            class="font-weight-extra-bold">Hakkımızda</strong></h2>
+
+                    <p class="mb-4">{{ about.content|safe }}</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+{% endblock body %}

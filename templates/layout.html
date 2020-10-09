@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{% block title %} NLConverting {% endblock title %}</title>
+
+    <meta name="keywords" content="{{ setting.keywords }}"/>
+    <meta name="description" content="{{ setting.description }}">
+    <meta name="author" content="Berke Karataş">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ setting.favicon.url }}" type="image/x-icon"/>
+    <link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.png' %}">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light"
+          rel="stylesheet" type="text/css">
+
+    {% include "inc/page-css.html" %}
+
+</head>
+
+<body>
+
+<div class="body">
+    {% include "inc/header.html" %}
+
+    {% block body %}
+
+
+    {% endblock body %}
+
+    {% include "inc/footer.html" %}
+</div>
+
+{% include "inc/page-js.html" %}
+
+</body>
+</html>

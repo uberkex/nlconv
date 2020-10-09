@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %} Ürünler {% endblock title %}
+
+
+{% block body %}
+
+    <div role="main" class="main">
+
+        <section
+                class="page-header page-header-modern page-header-background page-header-background-md overlay overlay-color-dark overlay-show overlay-op-7"
+                style="background-image: url({% static 'img/page-header/page-head7.jpg' %});">
+            <div class="container">
+                <div class="row mt-5">
+                    <div class="col-md-12 align-self-center p-static order-2 text-center">
+                        <h1 class="text-9 font-weight-bold appear-animation" data-appear-animation="maskUp"
+                            data-appear-animation-delay="100">Ürünler</h1>
+
+                    </div>
+                    <div class="col-md-12 align-self-center order-1">
+                        <ul class="breadcrumb breadcrumb-light d-block text-center appear-animation"
+                            data-appear-animation="fadeIn"
+                            data-appear-animation-delay="300">
+                            <li><a href="{% url 'home:home' %}">Anasayfa</a></li>
+                            <li class="active">Ürünler</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <div class="container py-2">
+
+            <ul class="nav nav-pills sort-source sort-source-style-3 justify-content-center" data-sort-id="portfolio"
+                data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
+                <li class="nav-item active" data-option-value="*"><a class="nav-link text-1 text-uppercase active"
+                                                                     href="#">Hepsi</a>
+                </li>
+                {% for category in categories %}
+                    <li class="nav-item" data-option-value=".{{ category.id }}"><a
+                            class="nav-link text-1"
+                            href="#">{{ category.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <div class="sort-destination-loader sort-destination-loader-showing mt-3">
+                <div class="row portfolio-list sort-destination" data-sort-id="portfolio">
+
+                    {% for category in categories %}
+                        {% for product in products %}
+                            {% if product.category.id == category.id %}
+                                <div class="col-lg-12 isotope-item mt-4 {{ category.id }}">
+                                    <div class="row">
+
+                                        <div class="col-lg-6">
+                                            <div class="portfolio-item">
+                                                <a href="{% url 'product:product_detail' product.slug product.id %}">
+												<span class="thumb-info thumb-info-no-zoom thumb-info-lighten border-radius-0 appear-animation"
+                                                      data-appear-animation="fadeIn" data-appear-animation-delay="100">
+													<span class="thumb-info-wrapper border-radius-0">
+														<img src="{{ product.image.url }}"
+                                                             class="img-fluid border-radius-0"
+                                                             alt="{{ product.title }}">
+
+														<span class="thumb-info-action">
+															<span class="thumb-info-action-icon bg-dark opacity-8"><i
+                                                                    class="fas fa-plus"></i></span>
+														</span>
+													</span>
+												</span>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+
+                                            <div class="overflow-hidden">
+                                                <h2 class="text-color-dark font-weight-bold text-5 mb-2 appear-animation"
+                                                    data-appear-animation="maskUp" data-appear-animation-delay="600">
+                                                    {{ product.title }}</h2>
+                                            </div>
+
+                                            <p class="appear-animation" data-appear-animation="fadeInUpShorter"
+                                               data-appear-animation-delay="800"> {{ product.description|safe|truncatewords:30 }}</p>
+
+                                            <ul class="list list-icons list-primary list-borders text-2 appear-animation"
+                                                data-appear-animation="fadeInUpShorter"
+                                                data-appear-animation-delay="1200">
+                                                <li><i class="fas fa-caret-right left-10"></i> <strong
+                                                        class="text-color-primary">Durum : </strong>Mevcut
+                                                </li>
+
+                                                <li><i class="fas fa-caret-right left-10"></i> <strong
+                                                        class="text-color-primary">Kategori:</strong>
+                                                    <a href="javascript:void(0)"
+                                                       class="badge badge-dark badge-sm badge-pill px-2 py-1 ml-1">{{ product.category }}</a>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+{% endblock body %}

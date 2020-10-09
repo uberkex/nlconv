@@ -1,0 +1,103 @@
+{% load static %}
+
+{% load widget_tweaks %}
+<footer id="footer">
+    <div class="container">
+        <div class="footer-ribbon">
+            <span>Bize Yazın</span>
+        </div>
+        <div class="row py-5 my-4">
+            <div class="col-md-6 col-lg-4 mb-5">
+                <div class="contact-details">
+                    <h5 class="text-3 mb-3">İLETİŞİM</h5>
+                    <ul class="list list-icons list-icons-lg">
+                        <li class="mb-1"><i class="far fa-dot-circle text-color-primary"></i>
+                            <p class="m-0">{{ setting.long_address }}</p></li>
+                        <li class="mb-1"><i class="fab fa-whatsapp text-color-primary"></i>
+                            <p class="m-0"><a href="tel:{{ setting.phone }}">{{ setting.phone }}</a></p></li>
+                        <li class="mb-1"><i class="far fa-envelope text-color-primary"></i>
+                            <p class="m-0"><a href="mailto:{{ setting.email }}">{{ setting.email }}</a></p></li>
+                    </ul>
+                </div>
+
+                <ul class="footer-social-icons social-icons social-icons-clean social-icons-icon-light m-0">
+                    <li class="social-icons-facebook"><a href="{{ setting.facebook }}" target="_blank"
+                                                         title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                    <li class="social-icons-twitter"><a href="https://www.twitter.com/" target="_blank" title="Twitter"><i
+                            class="fab fa-twitter"></i></a></li>
+                    <li class="social-icons-linkedin"><a href="{{ setting.linked_in }}" target="_blank"
+                                                         title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li class="social-icons-instagram"><a href="http://www.instagram.com/" target="_blank"
+                                                          title="Instagram"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                <h5 class="text-3 mb-3">MENÜ</h5>
+                <p class="mb-1"><a href="{% url 'home:home' %}" class="text-4 link-hover-style-1">Anasayfa</a></p>
+                <p class="mb-1"><a href="{% url 'about:about' %}" class="text-4 link-hover-style-1">Hakkımızda</a></p>
+                <p class="mb-1"><a href="{% url 'product:product_list' %}" class="text-4 link-hover-style-1">Ürünler</a>
+                </p>
+
+                <p class="mb-1"><a href="{% url 'blog:blog_list' %}" class="text-4 link-hover-style-1">Haberler</a></p>
+                <p class="mb-1"><a href="{% url 'contact:contact' %}" class="text-4 link-hover-style-1">İletişim</a></p>
+            </div>
+
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <h5 class="text-3 mb-3">SON HABERLER</h5>
+
+                <ul class="list-unstyled mb-0">
+                    {% for blogf in blog_footer %}
+
+                        <li class="media mb-3 pb-1">
+                            <article class="d-flex">
+                                <img class="mr-3 rounded-circle" src="{{ blogf.image.url }}" alt="{{ blogf.title }}"
+                                     style="max-width: 70px;">
+                                </a>
+                                <div class="media-body">
+                                    <a href="{% url 'blog:blog_detail' blogf.slug %}">
+                                        <h6 class="text-3 text-color-light opacity-8 ls-0 mb-1">{{ blogf.title }}</h6>
+                                        <p class="text-2 mb-0">{{ blogf.created_date }}</p>
+                                    </a>
+                                </div>
+                            </article>
+                        </li>
+
+
+                    {% endfor %}
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container py-2">
+            <div class="row py-4">
+                <div class="col-lg-1 d-flex align-items-center justify-content-center justify-content-lg-start mb-2 mb-lg-0">
+                    <a href="https://instagram.com/berkee.karatas" target="_blank" class="logo pr-0 pr-lg-3">
+                        <img alt="The Sky's Sons Company" src="{{ setting.logo_footer.url }}" class="opacity-5"
+                             height="33">
+                    </a>
+                </div>
+                <div class="col-lg-7 d-flex align-items-center justify-content-center justify-content-lg-start mb-4 mb-lg-0">
+                    <p>TheSky's Sons © Copyright 2020. NLConverting All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-4 d-flex align-items-center justify-content-center justify-content-lg-end">
+                    <nav id="sub-menu">
+                        <ul>
+
+                            <li><i class="fas fa-angle-right"></i><a target="_blank"
+                                                                     href="https://instagram.com/berkee.karatas"
+                                                                     class="ml-1 text-decoration-none"> Destek</a></li>
+                            <li><i class="fas fa-angle-right"></i><a target="_blank"
+                                                                     href="https://instagram.com/berkee.karatas"
+                                                                     class="ml-1 text-decoration-none"> İletişim</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

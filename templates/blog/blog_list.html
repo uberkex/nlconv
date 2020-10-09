@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+{% load static %}
+
+
+{% block title %} Haberler {% endblock title %}
+
+
+{% block body %}
+
+    <div role="main" class="main">
+
+        <section class="page-header page-header-modern bg-color-light-scale-1 page-header-md">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12 align-self-center p-static order-2 text-center">
+
+                        <h1 class="text-dark font-weight-bold text-8">NLConverting Haberler</h1>
+                        <span class="sub-title text-dark">Son Gelişmeleri Takip Edin!</span>
+                    </div>
+
+                    <div class="col-md-12 align-self-center order-1">
+
+                        <ul class="breadcrumb d-block text-center">
+                            <li><a href="{% url 'home:home' %}">Anasayfa</a></li>
+                            <li class="active">Haberler</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container py-4">
+
+            <div class="row">
+                <div class="col-lg-3 order-lg-2">
+                    <aside class="sidebar">
+
+
+
+                        <h5 class="font-weight-bold pt-4">Facebook Adresimiz</h5>
+                        <div class="fb-page" data-href="{{ setting.facebook }}" data-small-header="true"
+                             data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true">
+                            <blockquote cite="{{ setting.facebook }}" class="fb-xfbml-parse-ignore"><a target="_blank"
+                                                                                                       href="{{ setting.facebook }}">NLConverting</a>
+                            </blockquote>
+                        </div>
+                    </aside>
+                </div>
+
+
+                <div class="col-lg-9 order-lg-1">
+                    <div class="blog-posts">
+
+                        {% for blog in blogs %}
+
+                            <article class="post post-large">
+                                <div class="post-image">
+                                    <a href="{% url 'blog:blog_detail' blog.slug %}">
+                                        <img src="{{ blog.image.url }}"
+                                             class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0"
+                                             alt="{{ blog.title }}"/>
+                                    </a>
+                                </div>
+
+                                <div class="post-content">
+                                    <h2 class="font-weight-semibold text-6 line-height-3 mb-3"><a
+                                            href="{% url 'blog:blog_detail' blog.slug %}">{{ blog.title }}</a></h2>
+                                    <p>{{ blog.content|safe|truncatewords:80 }}</p>
+
+                                    <div class="post-meta">
+                                        <span><i class="far fa-clock"></i> <a href="javascript:void(0)">{{ blog.created_date}}</a></span>
+
+                                        <span class="d-block d-sm-inline-block float-sm-right mt-3 mt-sm-0"><a
+                                                href="{% url 'blog:blog_detail' blog.slug %}"
+                                                class="btn btn-xs btn-light text-1 text-uppercase">Devamını Oku</a></span>
+                                    </div>
+
+                                </div>
+                            </article>
+
+                        {% endfor %}
+
+
+                        {% if blogs.has_other_pages %}
+                            <ul class="pagination float-right">
+                                {% if blogs.has_previous %}
+                                    <li class="page-item"><a class="page-link"
+                                                             href="?page={{ blogs.previous_page_number }}"><i
+                                            class="fas fa-angle-left"></i></a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item disabled"><a class="page-link"><i
+                                            class="fas fa-angle-left"></i></a>
+                                    </li>
+                                {% endif %}
+                                {% for i in blogs.paginator.page_range %}
+
+                                    {% if blogs.number == i %}
+                                        <li class="page-item active"><a class="page-link">{{ i }}</a></li>
+                                    {% else %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                    {% endif %}
+
+                                {% endfor %}
+                                {% if blogs.has_next %}
+                                    <li class="page-item"><a class="page-link"
+                                                             href="?page={{ blogs.next_page_number }}"><i
+                                            class="fas fa-angle-right"></i></a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item disabled"><a class="page-link"><i
+                                            class="fas fa-angle-right"></i></a>
+                                    </li>
+                                {% endif %}
+
+                            </ul>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock body %}

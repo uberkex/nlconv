@@ -1,0 +1,173 @@
+{% extends "layout.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+
+{% block title %} İletişim {% endblock title %}
+
+
+{% block body %}
+
+    <div role="main" class="main">
+        <section
+
+                class="page-header page-header-modern page-header-background page-header-background-md parallax overlay overlay-color-dark overlay-show overlay-op-5 mt-0"
+                data-plugin-parallax data-plugin-options="{'speed': 1.2}"
+
+                data-image-src="{% static 'img/page-header/page-head3.jpg' %}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 order-2 order-md-1 align-self-center p-static">
+                        <h1>Bize <strong>Yazın</strong></h1>
+                        <span class="sub-title">Hemen Bilgi Alın</span>
+                    </div>
+                    <div class="col-md-4 order-1 order-md-2 align-self-center">
+                        <ul class="breadcrumb breadcrumb-light d-block text-md-right">
+                            <li><a href="{% url 'home:home' %}">Anasayfa</a></li>
+                            <li class="active">İletişim</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+
+            <div class="row py-4">
+                <div class="col-lg-6">
+
+                    <div class="overflow-hidden mb-1">
+                        <h2 class="font-weight-normal text-7 mt-2 mb-0 appear-animation" data-appear-animation="maskUp"
+                            data-appear-animation-delay="200"><strong class="font-weight-extra-bold">Bize</strong> Yazın
+                        </h2>
+                    </div>
+                    <div class="overflow-hidden mb-4 pb-3">
+                        <p class="mb-0 appear-animation" data-appear-animation="maskUp"
+                           data-appear-animation-delay="400">Sormak istediğiniz veya merak ettiğiniz konular hakkında bize hemen yazabilirsiniz.</p>
+                    </div>
+
+                    <form class="contact-form" action="" method="POST">
+                        {% csrf_token %}
+                        {% if messages %}
+
+                            {% for message in messages %}
+                                <div {% if message.tags %} class="alert alert-{{ message.tags }}"
+                                                           role="alert"{% endif %}>
+                                    <strong> {{ message }} </strong>
+                                </div>
+                            {% endfor %}
+
+                        {% endif %}
+
+
+                        <!--
+                        <div class="contact-form-success alert alert-success d-none mt-4">
+                            <strong>Success!</strong> Your message has been sent to us.
+                        </div>
+
+                        <div class="contact-form-error alert alert-danger d-none mt-4">
+                            <strong>Error!</strong> There was an error sending your message.
+                            <span class="mail-error-message text-1 d-block"></span>
+                        </div>
+                        -->
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label class="required font-weight-bold text-dark text-2">Adınız Soyadınız</label>
+                                {% render_field form.fullname type="text" value="" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="fullname" %}
+
+
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label class="required font-weight-bold text-dark text-2">Eposta Adresiniz</label>
+                                {% render_field form.email type="email" value="" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" %}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label class="font-weight-bold text-dark text-2">Konu</label>
+                                {% render_field form.subject type="text" value="" data-msg-required="Please enter the subject." maxlength="100" class="form-control" name="subject" %}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label class="required font-weight-bold text-dark text-2">Mesajınız</label>
+                                {% render_field form.message maxlength="5000" data-msg-required="Please enter your message." rows="8" class="form-control" name="message" %}
+
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <input type="submit" value="Mesaj Gönder" class="btn btn-primary btn-modern"
+                                       data-loading-text="Loading...">
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="col-lg-6">
+
+                    <div class="overflow-hidden mb-1">
+                        <h4 class="text-primary mb-0 appear-animation" data-appear-animation="maskUp"
+                            data-appear-animation-delay="200">Bizimle <strong>İletişime</strong> Geç</h4>
+                    </div>
+                    <div class="overflow-hidden mb-3">
+                        <p class="lead text-4 mb-0 appear-animation" data-appear-animation="maskUp"
+                           data-appear-animation-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Curabitur eget leo at velit imperdiet varius. In eu ipsum vitae velit congue iaculis vitae
+                            at risus.</p>
+                    </div>
+                    <div class="overflow-hidden">
+                        <p class="mb-0 appear-animation" data-appear-animation="maskUp"
+                           data-appear-animation-delay="600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Curabitur eget leo at velit imperdiet varius.</p>
+                    </div>
+
+                    <div class="appear-animation" data-appear-animation="fadeInUpShorter"
+                         data-appear-animation-delay="800">
+                        <h4 class="text-primary pt-5">NLConverting <strong>Ofisi</strong></h4>
+                        <ul class="list list-icons list-icons-style-3 mt-2">
+                            <li><i class="fas fa-map-marker-alt top-6"></i> <strong>Adres:</strong> {{ setting.long_address }}
+                            </li>
+                            <li><i class="fas fa-phone top-6"></i> <strong>Telefon:</strong> {{ setting.phone }}</li>
+                            <li><i class="fas fa-envelope top-6"></i> <strong>Email:</strong> <a
+                                    href="mailto:{{ setting.email }}">{{ setting.email }}</a></li>
+                        </ul>
+
+                        <div class="row lightbox mt-4 mb-0 pb-0"
+                             data-plugin-options="{'delegate': 'a', 'type': 'image', 'gallery': {'enabled': true}}">
+
+                            {% for office_image in office_images %}
+
+                            <div class="col-md-4 mb-4 mb-md-0">
+                                <a class="img-thumbnail p-0 border-0 d-block" href="{{ office_image.image.url }}"
+                                   data-plugin-options="{'type':'image'}">
+                                    <img class="img-fluid" src="{{ office_image.image.url }}" alt="{{ office_image.title }}">
+                                </a>
+                            </div>
+
+                            {% endfor %}
+
+
+                        </div>
+
+                        <h4 class="text-primary pt-5">Çalışma <strong>Saatleri</strong></h4>
+                        <ul class="list list-icons list-dark mt-2">
+                            <li><i class="far fa-clock top-6"></i> Hafta içi : 09.00 - 17.00</li>
+                            <li><i class="far fa-clock top-6"></i> Cumartesi : 09.00 - 14.00</li>
+                            <li><i class="far fa-clock top-6"></i> Pazar : Kapalı</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+{% endblock body %}

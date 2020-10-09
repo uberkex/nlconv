@@ -1,0 +1,195 @@
+{% extends "layout.html" %}
+{% load static %}
+
+
+
+{% block body %}
+    <div role="main" class="main">
+        {% include "inc/slider.html" %}
+        <div class="home-intro bg-primary" id="home-intro">
+            <div class="container">
+
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <p>
+
+                            Müşterilerimizin gereksinimlerini karşılamak için rakipsiz bir <span
+                                class="highlighted-word">Yetenek</span>
+                            <span>NLConverting bir Ünal Makina Sanayi ve Ticaret Ltd. Şti. kuruluşudur</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="get-started text-left text-lg-right">
+                            <a href="{% url 'contact:contact' %}"
+                               class="btn btn-dark btn-lg text-3 font-weight-semibold px-4 py-3">Hemen Bize Yazın</a>
+                            <div class="learn-more">veya <a href="{% url 'product:product_list' %}">hemen inceleyin</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+            <div class="home-concept mt-5">
+                <div class="container">
+
+                    <div class="row text-center">
+                        <span class="sun"></span>
+                        <span class="cloud"></span>
+                        <div class="col-lg-2 ml-lg-auto">
+                            <div class="process-image">
+
+                                <a href="{% url 'about:about' %}"><img
+                                        src="{% static 'img/home/strateji.png' %}"
+                                        alt="Strateji"/></a>
+                                <strong>Strateji</strong>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="process-image process-image-on-middle">
+                                <a href="{% url 'about:about' %}"><img
+                                        src="{% static 'img/home/planlama.png' %}"
+                                        alt="Planlama"/></a>
+                                <strong>Planlama</strong>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="process-image">
+                                <a href="{% url 'about:about' %}"><img
+                                        src="{% static 'img/home/kalite.png' %}"
+                                        alt="Kalite"/></a>
+                                <strong>Kalite</strong>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 ml-lg-auto">
+                            <div class="project-image">
+                                <div id="fcSlideshow" class="fc-slideshow">
+                                    <ul class="fc-slides">
+                                        <li><a href="{% url 'about:about' %}"><img class="img-responsive"
+                                                                                   src="{% static 'img/projects/project3.png' %}"
+                                                                                   alt="NLConverting"/></a></li>
+                                        <li><a href="{% url 'about:about' %}"><img class="img-responsive"
+                                                                                   src="{% static 'img/projects/project3.png' %}"
+                                                                                   alt="NLConverting"/></a></li>
+                                        <li><a href="{% url 'about:about' %}"><img class="img-responsive"
+                                                                                   src="{% static 'img/projects/project3.png' %}"
+                                                                                   alt="NLConverting"/></a></li>
+                                    </ul>
+                                </div>
+                                <strong class="our-work">NLConverting</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <section class="section section-height-3 bg-color-grey-scale-1 m-0 border-0">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-lg-6 pb-sm-4 pb-lg-0 pr-lg-5 mb-sm-5 mb-lg-0">
+                        <h2 class="text-color-dark font-weight-normal text-6 mb-2"><strong
+                                class="font-weight-extra-bold">{{ about_home.title }}</strong></h2>
+
+                        <p class="pr-5 mr-5">{{ about_home.short_description }}</p>
+                        <p><a href="{% url 'about:about' %}"
+                              class="read-more text-color-dark font-weight-semibold text-2">Devamını Oku
+                            <i class="fas fa-angle-right position-relative top-1 ml-1"></i></a></p>
+                    </div>
+                    <div class="col-sm-8 col-md-6 col-lg-4 offset-sm-4 offset-md-4 offset-lg-2 mt-sm-5"
+                         style="top: 1.7rem;">
+                        <img src="{{ about_home.image_1.url }}"
+                             class="img-fluid position-absolute d-none d-sm-block appear-animation"
+                             data-appear-animation="expandIn" data-appear-animation-delay="300"
+                             style="top: 10%; left: -50%;" alt="{{ about_home.title }}"/>
+                        <img src="{{ about_home.image_2.url }}"
+                             class="img-fluid position-absolute d-none d-sm-block appear-animation"
+                             data-appear-animation="expandIn" style="top: -33%; left: -29%;"
+                             alt="{{ about_home.title }}"/>
+                        <img src="{{ about_home.image_3.url }}"
+                             class="img-fluid position-relative appear-animation mb-2" data-appear-animation="expandIn"
+                             data-appear-animation-delay="600" alt="{{ about_home.title }}"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container mt-5 mb-5 pb-4">
+
+            <div class="row text-center pt-4">
+                <div class="col">
+
+                    <h4 class="text-primary lead tall text-4">20 ÜLKEDE 30'DAN FAZLA MÜŞTERİ BİZİ TERCİH ETTİ. GLOBAL
+                        ORTAKLARIMIZLA TANIŞIN </h4>
+                </div>
+            </div>
+
+            <div class="row text-center mt-5">
+                <div class="owl-carousel owl-theme carousel-center-active-item"
+                     data-plugin-options="{'responsive': {'0': {'items': 1}, '476': {'items': 1}, '768': {'items': 5}, '992': {'items': 7}, '1200': {'items': 7}}, 'autoplay': true, 'autoplayTimeout': 3000, 'dots': false}">
+
+                    {% for partner in partners %}
+
+                        <div>
+                            <img class="img-fluid" src="{{partner.image.url}}" alt="{{ partner.title }}">
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+
+        </div>
+
+        <section class="section section-custom-map appear-animation" data-appear-animation="fadeInUpShorter">
+            <section class="section section-default section-footer">
+                <div class="container">
+                    <div class="row mt-5 appear-animation" data-appear-animation="fadeInUpShorter">
+                        <div class="col-lg-12">
+                            <div class="recent-posts mb-5">
+                                <h2 class="font-weight-normal text-6 mb-4">Son <strong class="font-weight-extra-bold">Haberler</strong>
+                                </h2>
+
+
+                                <!-- cp1 -->
+                                <div class="row">
+                                    <!-- part1 -->
+                                    {% for blog in index_blog %}
+
+
+                                        <div class="col-lg-6 mb-4 mb-lg-0">
+                                            <article>
+                                                <div class="row">
+
+                                                    <div class="col pl-1">
+                                                        <h4 class="text-primary text-4"><a class="d-block"
+                                                                                           href="{% url 'blog:blog_detail' blog.slug %}">{{ blog.title }}</a>
+                                                        </h4>
+                                                        <p class="pr-4 mb-0">{{ blog.content|safe|truncatewords:20 }}</p>
+                                                        <a href="{% url 'blog:blog_detail' blog.slug %}"
+                                                           class="read-more text-color-dark font-weight-semibold text-2">Devamını
+                                                            Oku
+                                                            <i class="fas fa-angle-right position-relative top-1 ml-1"></i></a>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    {% endfor %}
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </section>
+    </div>
+{% endblock body %}
