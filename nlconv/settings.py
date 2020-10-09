@@ -74,7 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'nlconv.context_processors.settings',
+                # 'nlconv.context_processors.settings',
                 'nlconv.context_processors.menu',
                 'nlconv.context_processors.footer_blog',
             ],
