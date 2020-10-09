@@ -3,13 +3,13 @@ from home.models import Setting
 from product.models import Category, Product
 
 
-# def settings(request):
-#     setting = Setting.objects.get(pk=1)
-#     context = {
-#         'setting': setting
-#     }
-#
-#     return context
+def settings(request):
+    setting = Setting.objects.get(pk=1)
+    context = {
+        'setting': setting
+    }
+
+    return context
 
 
 def menu(request):
