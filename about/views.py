@@ -4,9 +4,9 @@ from .models import About, Information
 
 
 def about_us(request):
-    # about = About.objects.get(pk=1)
-    about = About.objects.all()
-    #about = get_object_or_404(About, pk=1)
+    about = About.objects.get(pk=1)
+    # about = About.objects.all()
+    # about = get_object_or_404(About, pk=1)
     infos = Information.objects.filter(is_published=True)
     context = {
         'about': about,

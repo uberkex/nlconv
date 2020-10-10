@@ -8,8 +8,8 @@ from .models import Setting, Partner
 
 
 def home(request):
-    # about_home = About.objects.get(pk=1)
-    about_home = About.objects.all()
+    about_home = About.objects.get(pk=1)
+    # about_home = About.objects.all()
     index_blog = Blog.objects.filter(is_published=True).order_by('-created_date')[0:2]
     partners = Partner.objects.filter(is_published=True)
 
